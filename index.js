@@ -26,10 +26,9 @@ function checkName(name) {
     if (typeof name !== 'string') {
         return 'invalid'
     }
-    const lastAlph = 'A,y,i,e,o,u,w'
-    const lowLastAlph = lastAlph.toLowerCase()
+    const lastAlph = 'a,y,i,e,o,u,w'
     const lowName = name.toLowerCase()
-    if (lowLastAlph.includes(lowName[lowName.length - 1])) {
+    if (lastAlph.includes(lowName[lowName.length - 1])) {
         return 'Good Name'
     } else {
         return 'Bad Name'
@@ -38,10 +37,10 @@ function checkName(name) {
 
 // ---------------------------
 
-console.log(deleteInvalids([1, null, undefined, 18, -19, NaN, "12", [1, 2], { ob: "lala" }]));
-console.log(deleteInvalids(["1", { num: 2 }, NaN]));
-console.log(deleteInvalids([1, 2, -3]));
-console.log(deleteInvalids({ num: [1, 2, 3] }));
+// console.log(deleteInvalids([1, null, undefined, 18, -19, NaN, "12", [1, 2], { ob: "lala" }]));
+// console.log(deleteInvalids(["1", { num: 2 }, NaN]));
+// console.log(deleteInvalids([1, 2, -3]));
+// console.log(deleteInvalids({ num: [1, 2, 3] }));
 
 function deleteInvalids(array) {
     if (Array.isArray(array) !== true) {
@@ -55,3 +54,22 @@ function deleteInvalids(array) {
     }
     return newArray
 }
+
+// ----------------------------
+
+// console.log(password({ name: "kolimuddin", birthYear: 1999, siteName: "google" }));
+// console.log(password({ name: "rahat", birthYear: 2002, siteName: "Facebook" }));
+// console.log(password({ name: "toky", birthYear: 200, siteName: "Facebook" }));
+// console.log(password({ name: "maisha", birthYear: 2002 }));
+
+function password(obj) {
+    if (Object.keys(obj).length !== 3 || Object.values(obj)[1] > 9999 || Object.values(obj)[1] < 1000) {
+        return 'invalid'
+    }
+
+    const webName = obj.siteName[0].toUpperCase() + obj.siteName.substring(1)
+    const name = obj.name
+    const birthDate = obj.birthYear
+    return webName + '#' + name + '@' + birthDate
+}
+
