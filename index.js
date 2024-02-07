@@ -80,7 +80,7 @@ function monthlySavings(arr, livingCost) {
     if (Array.isArray(arr) !== true || typeof livingCost !== "number") {
         return "invalid input"
     }
-    // const tax= 
+
     let earningArr = []
     for (const taka of arr) {
         if (taka >= 3000) {
