@@ -26,11 +26,32 @@ function checkName(name) {
     if (typeof name !== 'string') {
         return 'invalid'
     }
-    const lastAlph = 'ayieouw'
+    const lastAlph = 'A,y,i,e,o,u,w'
+    const lowLastAlph = lastAlph.toLowerCase()
     const lowName = name.toLowerCase()
-    if (lastAlph.includes(lowName[lowName.length - 1])) {
+    if (lowLastAlph.includes(lowName[lowName.length - 1])) {
         return 'Good Name'
     } else {
         return 'Bad Name'
     }
+}
+
+// ---------------------------
+
+console.log(deleteInvalids([1, null, undefined, 18, -19, NaN, "12", [1, 2], { ob: "lala" }]));
+console.log(deleteInvalids(["1", { num: 2 }, NaN]));
+console.log(deleteInvalids([1, 2, -3]));
+console.log(deleteInvalids({ num: [1, 2, 3] }));
+
+function deleteInvalids(array) {
+    if (Array.isArray(array) !== true) {
+        return "Invalid Array"
+    }
+    const newArray = []
+    for (const element of array) {
+        if (typeof element === "number" && !isNaN(element)) {
+            newArray.push(element)
+        }
+    }
+    return newArray
 }
